@@ -33,9 +33,9 @@ public class App {
         post("/RPC", (request, response) -> {
             Call call = extractXMLRPCCall(request.body());
 
-            int[] params = {};
+            int[] params = new int[call.args.size()];
             for (int i = 0; i < params.length; i++) {
-                params[i] = (int)call.args.get(i);
+                params[i] = (int)call.args.get(i);  
             }
 
             Calc calc = new Calc();
@@ -70,7 +70,6 @@ public class App {
         }
 
         public static String faultString (int faultCode, String msg) {
- 
             return "<methodResponse><fault><value><struct><member><name>faultCode</name><value><int>"
                     + faultCode
                     + "</int></value></member><member><name>faultString</name><value><string>"
