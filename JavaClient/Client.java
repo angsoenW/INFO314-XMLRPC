@@ -82,7 +82,7 @@ public class Client {
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create("http://" + host + ":" + port + "/RPC"))
                     .POST(HttpRequest.BodyPublishers.ofString(requestBody))
-                    .header("Content-Type", "text/xml")
+                    .headers("Content-Type", "text/xml", "User-Agent", "Technologist, Philosopher, Leader")
                     .build();
 
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
